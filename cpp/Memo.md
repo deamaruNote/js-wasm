@@ -5,3 +5,7 @@
 - EXPORT_ES6 以ES6語法導出
 - EXPORT_NAME 模組名稱
 - ENVIRONMENT 指定運行環境，這種設置為web
+
+sh 自動化小工具未修正
+
+![](./demo.jpg)

@@ -1,6 +1,6 @@
 
 var hello = (() => {
-  var _scriptDir = import.meta.url;
+  var _scriptDir = './hello.wasm';
   
   return (
 function(hello) {
@@ -153,7 +153,7 @@ if (ENVIRONMENT_IS_SHELL) {
 // ENVIRONMENT_IS_NODE.
 if (ENVIRONMENT_IS_WEB || ENVIRONMENT_IS_WORKER) {
   if (ENVIRONMENT_IS_WORKER) { // Check worker, not web, since window could be polyfilled
-    scriptDirectory = self.location.href;
+    scriptDirectory = window.window.self.location.href;
   } else if (typeof document != 'undefined' && document.currentScript) { // web
     scriptDirectory = document.currentScript.src;
   }
@@ -1004,8 +1004,8 @@ if (Module['locateFile']) {
     wasmBinaryFile = locateFile(wasmBinaryFile);
   }
 } else {
-  // Use bundler-friendly `new URL(..., import.meta.url)` pattern; works in browsers too.
-  wasmBinaryFile = new URL('hello.wasm', import.meta.url).href;
+  // Use bundler-friendly `new URL(..., './hello.wasm')` pattern; works in browsers too.
+  wasmBinaryFile = new URL('hello.wasm', './hello.wasm').href;
 }
 
 function getBinary(file) {
